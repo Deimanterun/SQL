@@ -1,0 +1,36 @@
+CREATE TABLE clothing_items (
+    item_id INTEGER PRIMARY KEY, -- Unique identifier for each item
+    item_name TEXT, -- Name of the clothing item
+    category TEXT,  -- Category the item belongs to (e.g., shirts, pants, etc.)
+    size TEXT,  -- Size options available for the item
+    price NUMERIC); -- Price of the item in a chosen currency
+    
+    
+INSERT INTO clothing_items (item_id, item_name, category, size, price) VALUES
+    (1, 'Linen T-Shirt', 'Shirts', 'Medium', 19.99),
+    (2, 'Skinny Jeans', 'Pants', '32x32', 49.99),
+    (3, 'Sundress', 'Dresses', 'Small', 39.99),
+    (4, 'Fleece pullover', 'Outerwear', 'Large', 29.99),
+    (5, 'Casual Shorts', 'Shorts', 'Medium', 24.99),
+    (6, 'Formal Blouse', 'Blouses', 'Small', 34.99),
+    (7, 'Cargo Pants', 'Pants', '34x32', 44.99),
+    (8, 'Denim Jacket', 'Outerwear', 'Medium', 59.99),
+    (9, 'Floral Skirt', 'Skirts', 'Large', 29.99),
+    (10, 'V-neck Sweater', 'Sweaters', 'Medium', 39.99),
+    (11, 'Athletic Leggings', 'Athleticwear', 'Small', 29.99),
+    (12, 'Plaid Shirt', 'Shirts', 'Large', 24.99),
+    (13, 'Leather Jacket', 'Outerwear', 'Medium', 79.99),
+    (14, 'Maxi Dress', 'Dresses', 'Medium', 49.99),
+    (15, 'Knit Beanie', 'Accessories', 'One Size', 12.99);
+
+-- Select all items, ordered by price in ascending order
+SELECT * FROM clothing_items ORDER BY price ASC;
+
+-- Select the most expensive item
+SELECT * FROM clothing_items ORDER BY price DESC LIMIT 1;
+
+-- Calculate the average price of all items
+SELECT AVG(price) AS average_price FROM clothing_items;
+
+-- Count the number of items in each category
+SELECT category, COUNT(*) AS item_count FROM clothing_items GROUP BY category;
