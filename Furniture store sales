@@ -1,0 +1,41 @@
+CREATE TABLE sales(
+  ID INTEGER  NOT NULL PRIMARY KEY
+, transaction_date TEXT
+, product TEXT
+, price INTEGER
+, payment_type TEXT
+, name TEXT
+, city TEXT
+, state TEXT
+, country TEXT
+, account_created TEXT
+, last_login TEXT
+, latitude REAL
+, longitude REAL
+);
+
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/2/09 6:17','Chair',1200,'Mastercard','Carolina','Basildon','England','United Kingdom','1/2/09 6:00','1/2/09 6:08',51.5,-1.1166667);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/2/09 4:53','Chair',1200,'Visa','Betina','Parkville','MO','United states','1/2/09 4:42','1/2/09 7:49',39.195,-94.68194);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/2/09 13:08','Chair',1200,'Mastercard','Federica e Andrea','Astoria','OR','United states','1/1/09 16:21','1/3/09 12:32',46.18806,-123.83);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/3/09 14:44','Chair',1200,'Visa','Gouya','Echuca','Victoria','Australia','9/25/05 21:13','1/3/09 14:22',-36.1333333,144.75);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/4/09 12:56','Couch',3600,'Visa','Gerd W','Cahaba Heights','AL','United states','11/15/08 15:47','1/4/09 12:45',33.52056,-86.8025);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/4/09 13:19','Chair',1200,'Visa','Laurence','Mickleton','NJ','United states','9/24/08 15:19','1/4/09 13:04',39.79,-75.23806);
+INSERT INTO sales(transaction_date,product,price,payment_type,name,city,state,country,account_created,last_login,latitude,longitude) VALUES ('1/4/09 20:11','Chair',1200,'Mastercard','Fleur','Peoria','IL','United states','1/3/09 9:38','1/4/09 19:45',40.69361,-89.58889);
+
+SELECT SUM(price) AS total_sales_amount
+FROM sales;
+
+SELECT product, COUNT(*) AS product_count
+FROM sales
+GROUP BY product
+ORDER BY product_count DESC;
+
+SELECT country, SUM(price) AS total_sales_amount
+FROM sales
+GROUP BY country
+ORDER BY total_sales_amount DESC;
+
+SELECT name, COUNT(*) AS transaction_count, SUM(price) AS total_spending
+FROM sales
+GROUP BY name
+ORDER BY transaction_count DESC;
