@@ -39,3 +39,24 @@ SELECT name, COUNT(*) AS transaction_count, SUM(price) AS total_spending
 FROM sales
 GROUP BY name
 ORDER BY transaction_count DESC;
+
+SELECT
+  payment_type,
+  AVG(price) AS avg_price
+FROM sales
+GROUP BY payment_type
+HAVING AVG(price) > 1500;
+
+SELECT
+  CASE
+    WHEN price > 1500 THEN 'Expensive'
+    ELSE 'Affordable'
+  END AS price_category,
+  COUNT(*) AS count
+FROM sales
+GROUP BY price_category;
+
+SELECT *
+FROM sales
+WHERE price > 2000
+  AND (payment_type = 'Mastercard' OR payment_type = 'Visa');
